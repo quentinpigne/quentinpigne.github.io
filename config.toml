@@ -1,0 +1,19 @@
+baseURL = 'http://quentinpigne.github.io/'
+languageCode = 'fr-FR'
+title = 'Ma documentation'
+theme = "relearn"
+
+[params]
+  # Author of the site, will be used in meta information
+  author = "Quentin Pigné"
+  # Description of the site, will be used in meta information
+  description = "Site centralisant l'ensemble de ma documentation personnelle"
+  # Shows a checkmark for visited pages on the menu
+  showVisitedLinks = false
+  # Hide Next and Previous page buttons normally displayed full height beside content
+  disableNextPrev = true
+  # Change default color scheme with a variant one. Eg. can be "red", "blue", "green" or an array like [ "blue", "green" ].
+  themeVariant = "blue"
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON" ]
