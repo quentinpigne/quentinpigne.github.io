@@ -1,8 +1,13 @@
+@import "theme-relearn-light.css";
+
 #sidebar {
     display: none;
 }
 #body {
     margin-left: 0;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
 }
 #body #navigation {
     display: none;
@@ -33,6 +38,7 @@ pre {
     color: #777;
 }
 .navigation,
+#top-print-link,
 #top-github-link {
     /* we don't need this while printing */
     display: none;
@@ -42,6 +48,7 @@ pre {
 }
 #body #breadcrumbs .links {
     overflow-x: hidden;
+    visibility: visible;
 }
 .copy-to-clipboard-button {
     display: none;
@@ -69,15 +76,37 @@ pre {
 hr{
     border-bottom: 1px solid #ddd;
 }
-#body-inner.chapter h1 {
-    border-bottom: 1px solid #ddd;
+body,
+#body,
+#body-inner {
+    overflow: visible !important; /* turn off limitations for perfect scrollbar */
 }
+#body #body-inner {
+    /* reset paddings for chapters in screen */
+    padding: 0 3rem 4rem 3rem;
+}
+
+#body #body-inner h1 {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2rem;
+    padding-bottom: .75rem;
+}
+#body-inner .chapter h3:first-of-type {
+    margin-top: 2rem;
+}
+#body-inner .chapter p {
+    font-size: 1rem;
+}
+
 .footline {
     /* in print mode show footer line to signal reader the end of document */
     border-top: 1px solid #ddd;
     color: #777;
     margin-top: 1.5rem;
     padding-top: .75rem;
+}
+#body #body-inner .footline a {
+    text-decoration: none;
 }
 #body #body-inner a {
     /* in print we want to distinguish links in our content from
@@ -90,7 +119,7 @@ hr{
     /* we don't need this while printing */
     display: none;
 }
-#sidebar-toggle-span {
+#body #sidebar-toggle-span {
     /* we don't need this while printing */
     display: none;
 }
@@ -100,6 +129,9 @@ hr{
 #topbar{
     /* the header is sticky which is not suitable for print; */
     position: inherit; /* IE11 doesn't know "initial" here */
+}
+#topbar > div {
+    background-color: #ffffff; /* IE11 doesn't know "initial" here */
 }
 #body .tab-nav-button:not(.active) {
     opacity: .5;
@@ -120,6 +152,12 @@ div.box {
 div.box > .box-content {
     background-color: white;
 }
+rapi-doc{
+    /* adjust rapi-doc internals to fill out available space */
+    font-size: 4pt;
+    margin-left: -12px;
+    width: calc( 100% + 12px + 8px );
+}
 .btn-default,
 #body .tab-nav-button {
     color: black !important;
@@ -131,4 +169,11 @@ div.box > .box-content {
 }
 #body .tab-nav-button:not(.active) {
     opacity: 1;
+}
+
+article {
+    break-before: page;
+}
+#body-inner article:first-of-type {
+    break-before: avoid;
 }

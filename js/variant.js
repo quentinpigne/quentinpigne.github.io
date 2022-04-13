@@ -1,9 +1,35 @@
 // we need to load this script in the html head to avoid flickering
 // on page load if the user has selected a non default variant
+
+// polyfill this rotten piece of sh...oftware
+if( typeof NodeList !== "undefined" && NodeList.prototype && !NodeList.prototype.forEach ){
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
+if (!String.prototype.startsWith) {
+    Object.defineProperty(String.prototype, 'startsWith', {
+        value: function(search, rawPos) {
+            var pos = rawPos > 0 ? rawPos|0 : 0;
+            return this.substring(pos, pos + search.length) === search;
+        }
+    });
+}
+
+if(!Array.prototype.find){Array.prototype.find=function(predicate){if(this===null){throw new TypeError('Array.prototype.find called on null or undefined')}if(typeof predicate!=='function'){throw new TypeError('predicate must be a function')}var list=Object(this);var length=list.length>>>0;var thisArg=arguments[1];var value;for(var i=0;i<length;i+=1){value=list[i];if(predicate.call(thisArg,value,i,list)){return value}}return undefined}}
+
+Array.from||(Array.from=function(){var r;try{r=Symbol.iterator?Symbol.iterator:"Symbol(Symbol.iterator)"}catch(t){r="Symbol(Symbol.iterator)"}var t=Object.prototype.toString,n=function(r){return"function"==typeof r||"[object Function]"===t.call(r)},o=Math.pow(2,53)-1,e=function(r){var t=function(r){var t=Number(r);return isNaN(t)?0:0!==t&&isFinite(t)?(t>0?1:-1)*Math.floor(Math.abs(t)):t}(r);return Math.min(Math.max(t,0),o)},a=function(t,n){var o=t&&n[r]();return function(r){return t?o.next():n[r]}},i=function(r,t,n,o,e,a){for(var i=0;i<n||e;){var u=o(i),f=e?u.value:u;if(e&&u.done)return t;t[i]=a?void 0===r?a(f,i):a.call(r,f,i):f,i+=1}if(e)throw new TypeError("Array.from: provided arrayLike or iterator has length more then 2 ** 52 - 1");return t.length=n,t};return function(t){var o=this,u=Object(t),f=n(u[r]);if(null==t&&!f)throw new TypeError("Array.from requires an array-like object or iterator - not null or undefined");var l,c=arguments.length>1?arguments[1]:void 0;if(void 0!==c){if(!n(c))throw new TypeError("Array.from: when provided, the second argument must be a function");arguments.length>2&&(l=arguments[2])}var y=e(u.length),h=n(o)?Object(new o(y)):new Array(y);return i(l,h,y,a(f,u),f,c)}}());
+
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var variants = {
 	variant: '',
 	variants: [],
 	customvariantname: 'my-custom-variant',
+	isstylesheetloaded: true,
 
 	init: function( variants ){
 		this.variants = variants;
@@ -25,6 +51,10 @@ var variants = {
 		window.localStorage.setItem( baseUriFull+'variant', variant );
 	},
 
+	isVariantLoaded: function(){
+		return window.theme && this.isstylesheetloaded;
+	},
+
 	markSelectedVariant: function(){
 		var variant = this.getVariant();
 		var select = document.querySelector( '#select-variant' );
@@ -35,6 +65,13 @@ var variants = {
 		if( variant && select.value != variant ){
 			select.value = variant;
 		}
+		var interval_id = setInterval( function(){
+			if( this.isVariantLoaded() ){
+				clearInterval( interval_id );
+				initMermaid( true );
+				initSwagger( true );
+			}
+		}.bind( this ), 25 );
 		// remove selection, because if some uses an arrow navigation"
 		// by pressing the left or right cursor key, we will automatically
 		// select a different style
@@ -121,7 +158,6 @@ var variants = {
 				this.saveCustomVariant();
 			}
 		}.bind( this ), 25 );
-
 	},
 
 	resetVariant: function(){
@@ -136,6 +172,10 @@ var variants = {
 		}
 	},
 
+	onLoadStylesheet: function(){
+		variants.isstylesheetloaded = true;
+	},
+
 	switchStylesheet: function( variant, without_check ){
 		var link = document.querySelector( '#variant-style' );
 		if( !link ){
@@ -143,7 +183,15 @@ var variants = {
 		}
 		var old_path = link.getAttribute( 'href' );
 		var new_path = this.generateVariantPath( variant, old_path );
-		link.setAttribute( 'href', new_path );
+		this.isstylesheetloaded = false;
+
+		// Chrome needs a new element to trigger the load callback again
+		var new_link = document.createElement( 'link' );
+		new_link.id = 'variant-style';
+		new_link.rel = 'stylesheet';
+		new_link.onload = this.onLoadStylesheet;
+		new_link.setAttribute( 'href', new_path );
+		link.parentNode.replaceChild( new_link, link );
 	},
 
 	changeVariant: function( variant ){
@@ -208,34 +256,52 @@ var variants = {
 		this.download( this.generateStylesheet(), 'text/css', 'theme-' + this.customvariantname + '.css' );
 	},
 
-	adjustCSSRules: function(selector, props, sheets){
-		// get stylesheet(s)
-		if (!sheets) sheets = [...document.styleSheets];
-		else if (sheets.sup){    // sheets is a string
-			let absoluteURL = new URL(sheets, document.baseURI).href;
-			sheets = [...document.styleSheets].filter(i => i.href == absoluteURL);
-		}
-		else sheets = [sheets];  // sheets is a stylesheet
+	adjustCSSRules: function(selector, props, sheets) {
+    // get stylesheet(s)
+    if (!sheets) sheets = [].concat(Array.from(document.styleSheets));else if (sheets.sup) {
+      // sheets is a string
+      var absoluteURL = new URL(sheets, document.baseURI).href;
+      sheets = [].concat(document.styleSheets).filter(function (i) {
+        return i.href == absoluteURL;
+      });
+    } else sheets = [sheets]; // sheets is a stylesheet
+    // CSS (& HTML) reduce spaces in selector to one.
 
-		// CSS (& HTML) reduce spaces in selector to one.
-		selector = selector.replace(/\s+/g, ' ');
-		const findRule = s => [...s.cssRules].reverse().find(i => i.selectorText == selector)
-		let rule = sheets.map(findRule).filter(i=>i).pop()
+    selector = selector.replace(/\s+/g, ' ');
 
-		const propsArr = props.sup
-			? props.split(/\s*;\s*/).map(i => i.split(/\s*:\s*/)) // from string
-			: Object.entries(props);                              // from Object
+    var findRule = function findRule(s) {
+      return [].concat(s.cssRules).reverse().find(function (i) {
+        return i.selectorText == selector;
+      });
+    };
 
-		if (rule) for (let [prop, val] of propsArr){
-			// rule.style[prop] = val; is against the spec, and does not support !important.
-			rule.style.setProperty(prop, ...val.split(/ *!(?=important)/));
-		}
-		else {
-			sheet = sheets.pop();
-			if (!props.sup) props = propsArr.reduce((str, [k, v]) => `${str}; ${k}: ${v}`, '');
-			sheet.insertRule(`${selector} { ${props} }`, sheet.cssRules.length);
-		}
-	},
+    var rule = sheets.map(findRule).filter(function (i) {
+      return i;
+    }).pop();
+    var propsArr = props.sup ? props.split(/\s*;\s*/).map(function (i) {
+      return i.split(/\s*:\s*/);
+    }) // from string
+    : Object.entries(props); // from Object
+
+    if (rule) {
+      for (var _iterator = _createForOfIteratorHelperLoose(propsArr), _step; !(_step = _iterator()).done;) {
+        var _rule$style;
+        var _step$value = _step.value,
+            prop = _step$value[0],
+            val = _step$value[1];
+        // rule.style[prop] = val; is against the spec, and does not support !important.
+        (_rule$style = rule.style).setProperty.apply(_rule$style, [prop].concat(val.split(/ *!(?=important)/)));
+      }
+    } else {
+      sheet = sheets.pop();
+      if (!props.sup) props = propsArr.reduce(function (str, _ref) {
+        var k = _ref[0],
+            v = _ref[1];
+        return str + "; " + k + ": " + v;
+      }, '');
+      sheet.insertRule(selector + " { " + props + " }", sheet.cssRules.length);
+    }
+  },
 
 	normalizeColor: function( c ){
 		if( !c || !c.trim ){
@@ -370,6 +436,7 @@ var variants = {
 		this.styleGraphGroup( '#mainheadings', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#inlinecode', 'CODE-INLINE-BG-color' );
 		this.styleGraphGroup( '#blockcode', 'CODE-BLOCK-BG-color' );
+		this.styleGraphGroup( '#thirdparty', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#coloredboxes', 'BOX-BG-color' );
 		this.styleGraphGroup( '#menu', 'MENU-SECTIONS-BG-color' );
 		this.styleGraphGroup( '#menuheader', 'MENU-HEADER-BG-color' );
@@ -433,6 +500,10 @@ var variants = {
 			'      direction LR\n' +
 					g_groups[ 'code blocks' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
 			'    end\n' +
+			'    subgraph thirdparty["3rd party"]\n' +
+			'      direction LR\n' +
+					g_groups[ '3rd party' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'    end\n' +
 			'    subgraph coloredboxes["colored boxes"]\n' +
 			'      direction LR\n' +
 					g_groups[ 'colored boxes' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
@@ -461,6 +532,16 @@ var variants = {
 		{ name: 'MAIN-TITLES-H5-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H4-color',        tooltip: 'text color of h5-h6 titles', },
 		{ name: 'MAIN-TITLES-H6-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H5-color',        tooltip: 'text color of h6 titles', },
 
+		{ name: 'MAIN-font',                             group: 'content',        default: '"Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif', tooltip: 'text font of content and h1 titles', },
+
+		{ name: 'MAIN-TITLES-TEXT-font',                 group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h2-h6 titles and transparent box titles', },
+		{ name: 'MAIN-TITLES-H1-font',                   group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h1 titles', },
+		{ name: 'MAIN-TITLES-H2-font',                   group: 'headings',      fallback: 'MAIN-TITLES-TEXT-font',       tooltip: 'text font of h2-h6 titles', },
+		{ name: 'MAIN-TITLES-H3-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H2-font',         tooltip: 'text font of h3-h6 titles', },
+		{ name: 'MAIN-TITLES-H4-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H3-font',         tooltip: 'text font of h4-h6 titles', },
+		{ name: 'MAIN-TITLES-H5-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H4-font',         tooltip: 'text font of h5-h6 titles', },
+		{ name: 'MAIN-TITLES-H6-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H5-font',         tooltip: 'text font of h6 titles', },
+
 		{ name: 'CODE-BLOCK-color',                      group: 'code blocks',    default: '#000000',                     tooltip: 'fallback text color of block code; should be adjusted to your selected chroma style', },
 		{ name: 'CODE-BLOCK-BG-color',                   group: 'code blocks',    default: '#f8f8f8',                     tooltip: 'fallback background color of block code; should be adjusted to your selected chroma style', },
 		{ name: 'CODE-BLOCK-BORDER-color',               group: 'code blocks',   fallback: 'CODE-BLOCK-BG-color',         tooltip: 'border color of block code', },
@@ -468,6 +549,11 @@ var variants = {
 		{ name: 'CODE-INLINE-color',                     group: 'inline code',    default: '#5e5e5e',                     tooltip: 'text color of inline code', },
 		{ name: 'CODE-INLINE-BG-color',                  group: 'inline code',    default: '#fffae9',                     tooltip: 'background color of inline code', },
 		{ name: 'CODE-INLINE-BORDER-color',              group: 'inline code',    default: '#fbf0cb',                     tooltip: 'border color of inline code', },
+
+		{ name: 'CODE-font',                             group: 'content',        default: '"Consolas", menlo, monospace', tooltip: 'text font of code', },
+
+		{ name: 'MERMAID-theme',                         group: '3rd party',      default: 'default',                     tooltip: 'name of the default Mermaid theme for this variant, can be overridden in config.toml', },
+		{ name: 'SWAGGER-theme',                         group: '3rd party',      default: 'light',                       tooltip: 'name of the default Swagger theme for this variant, can be overridden in config.toml', },
 
 		{ name: 'MENU-HEADER-BG-color',                  group: 'header',         default: '#7dc903',                     tooltip: 'background color of menu header', },
 		{ name: 'MENU-HEADER-BORDER-color',              group: 'header',        fallback: 'MENU-HEADER-BG-color',        tooltip: 'separator color of menu header', },

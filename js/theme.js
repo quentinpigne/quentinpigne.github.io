@@ -1,3 +1,4 @@
+var theme = true;
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
 if( isIE ){
     // we don't support sidebar flyout in IE
@@ -6,6 +7,8 @@ if( isIE ){
 else{
     document.querySelector( 'body' ).classList.add( 'mobile-support' );
 }
+var isPrint = document.querySelector( 'body' ).classList.contains( 'print' );
+
 var touchsupport = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)
 
 var formelements = 'button, datalist, fieldset, input, label, legend, meter, optgroup, option, output, progress, select, textarea';
@@ -61,33 +64,136 @@ function restoreTabSelections() {
     }
 }
 
-function initMermaid() {
-    $('code.language-mermaid').each(function(index, element) {
-        var content = $(element).html().replace(/&amp;/g, '&');
-        $(element).parent().replaceWith('<div class="mermaid" align="center">' + content + '</div>');
-    });
+function initMermaid( update ) {
+    // we are either in update or initialization mode;
+    // during initialization, we want to edit the DOM;
+    // during update we only want to execute if something chanegd
+    var decodeHTML = function( html ){
+        var txt = document.createElement( 'textarea' );
+        txt.innerHTML = html;
+        return txt.value;
+    };
 
-    if (typeof mermaid != 'undefined' && typeof mermaid.mermaidAPI != 'undefined') {
-        mermaid.mermaidAPI.initialize( Object.assign( {}, mermaid.mermaidAPI.getSiteConfig(), { startOnLoad: true } ) );
-        mermaid.contentLoaded();
+    var parseGraph = function( graph ){
+        var d = /^\s*(%%\s*\{\s*\w+\s*:([^%]*?)%%\s*\n?)/g;
+        var m = d.exec( graph );
+        var dir = {};
+        var content = graph;
+        if( m && m.length == 3 ){
+            dir = JSON.parse( '{ "dummy": ' + m[2] ).dummy;
+            content = graph.substring( d.lastIndex );
+        }
+        return { dir: dir, content: content };
+    };
+
+    var serializeGraph = function( graph ){
+        return '%%{init: ' + JSON.stringify( graph.dir ) + '}%%\n' + graph.content;
+    };
+
+    var init_func = function(){
+        state.is_initialized = true;
+        var is_initialized = false;
+        var theme = variants.getColorValue( 'MERMAID-theme' );
+        document.querySelectorAll('.mermaid').forEach( function( element ){
+            var parse = parseGraph( decodeHTML( element.innerHTML ) );
+
+            if( parse.dir.theme ){
+                parse.dir.relearn_user_theme = true;
+            }
+            if( !parse.dir.relearn_user_theme ){
+                parse.dir.theme = theme;
+            }
+            is_initialized = true;
+
+            var graph = serializeGraph( parse );
+            element.innerHTML = graph;
+            var new_element = document.createElement( 'div' );
+            new_element.classList.add( 'mermaid-container' );
+            new_element.innerHTML = '<div class="mermaid-code">' + graph + '</div>' + element.outerHTML;
+            element.parentNode.replaceChild( new_element, element );
+        });
+        return is_initialized;
+    }
+
+    var update_func = function(){
+        var is_initialized = false;
+        var theme = variants.getColorValue( 'MERMAID-theme' );
+        document.querySelectorAll( '.mermaid-container' ).forEach( function( e ){
+            var element = e.querySelector( '.mermaid' );
+            var code = e.querySelector( '.mermaid-code' );
+            var parse = parseGraph( decodeHTML( code.innerHTML ) );
+
+            if( parse.dir.relearn_user_theme ){
+                return;
+            }
+            if( parse.dir.theme == theme ){
+                return;
+            }
+            is_initialized = true;
+
+            parse.dir.theme = theme;
+            var graph = serializeGraph( parse );
+            element.removeAttribute('data-processed');
+            element.innerHTML = graph;
+            code.innerHTML = graph;
+        });
+        return is_initialized;
+    };
+
+    var state = this;
+    if( update && !state.is_initialized ){
+        return;
+    }
+    if( typeof variants == 'undefined' ){
+        return;
+    }
+    if( typeof mermaid == 'undefined' || typeof mermaid.mermaidAPI == 'undefined' ){
+        return;
+    }
+
+    var is_initialized = ( update ? update_func() : init_func() );
+    if( is_initialized ){
+        mermaid.init();
         $(".mermaid svg").svgPanZoom({});
     }
 }
 
+function initSwagger( update ){
+    if( typeof variants == 'undefined' ){
+        return;
+    }
+    var attrs = [
+        [ 'bg-color', variants.getColorValue( 'MAIN-BG-color' ) ],
+        [ 'mono-font', variants.getColorValue( 'CODE-font' ) ],
+        [ 'primary-color', variants.getColorValue( 'TAG-BG-color' ) ],
+        [ 'regular-font', variants.getColorValue( 'MAIN-font' ) ],
+        [ 'text-color', variants.getColorValue( 'MAIN-TEXT-color' ) ],
+        [ 'theme', variants.getColorValue( 'SWAGGER-theme' ) ],
+    ];
+    document.querySelectorAll( 'rapi-doc' ).forEach( function( e ){
+        attrs.forEach( function( attr ){
+            e.setAttribute( attr[0], attr[1] );
+        });
+    });
+}
+
 function initAnchorClipboard(){
-    var clip = new ClipboardJS('.anchor');
-    $("h1~h2,h1~h3,h1~h4,h1~h5,h1~h6").append(function(index, html){
-        var element = $(this);
+    document.querySelectorAll( 'h1~h2,h1~h3,h1~h4,h1~h5,h1~h6').forEach( function( element ){
         var url = encodeURI(document.location.origin + document.location.pathname);
-        var link = url + "#"+element[0].id;
-        var html = " " + $( '<span>' ).addClass("anchor").attr("title", window.T_Copy_link_to_clipboard).attr("data-clipboard-text", link).append("<i class='fas fa-link fa-lg'></i>").get(0).outerHTML;
-        return html;
+        var link = url + "#"+element.id;
+        var new_element = document.createElement( 'span' );
+        new_element.classList.add( 'anchor' );
+        new_element.setAttribute( 'title', window.T_Copy_link_to_clipboard );
+        new_element.setAttribute( 'data-clipboard-text', link );
+        new_element.innerHTML = '<i class="fas fa-link fa-lg"></i>';
+        element.appendChild( new_element );
     });
 
     $(".anchor").on('mouseleave', function(e) {
         $(this).attr('aria-label', null).removeClass('tooltipped tooltipped-s tooltipped-w');
     });
 
+    var clip = new ClipboardJS('.anchor');
     clip.on('success', function(e) {
         e.clearSelection();
         $(e.trigger).attr('aria-label', window.T_Link_copied_to_clipboard).addClass('tooltipped tooltipped-s');
@@ -191,12 +297,11 @@ function initArrowNav(){
 }
 
 function initMenuScrollbar(){
-    var content = '#body-inner';
-    if( isIE ){
-        // IE can not display the topbar as sticky; so we let
-        // the whole body scroll instead of just the content
-        content = '#body';
+    if( isPrint ){
+        return;
     }
+
+    var content = '#body-inner';
     var autofocus = false;
     document.addEventListener('keydown', function(event){
         // for initial keyboard scrolling support, no element
@@ -229,10 +334,6 @@ function initMenuScrollbar(){
     // that need to be executed inbetween our own handlers
     var psm = new PerfectScrollbar('#content-wrapper');
     var psc = new PerfectScrollbar(content);
-    window.addEventListener('resize', function(){
-        psm && psm.update();
-        psc && psc.update();
-    });
     document.addEventListener('keydown', function(){
         // if we facked initial scrolling, we want to
         // remove the focus to not leave visual markers on
@@ -242,6 +343,19 @@ function initMenuScrollbar(){
             psm.scrollbarY.blur();
             autofocus = false;
         }
+    });
+    // on resize, we have to redraw the scrollbars to let new height
+    // affect their size
+    window.addEventListener('resize', function(){
+        psm && psm.update();
+        psc && psc.update();
+    });
+    // now that we may have collapsible menus, we need to call a resize
+    // for the menu scrollbar if sections are expanded/collapsed
+    document.querySelectorAll('#sidebar .collapsible-menu input.toggle').forEach( function(e){
+        e.addEventListener('change', function(){
+            psm && psm.update();
+        });
     });
 }
 
@@ -374,10 +488,24 @@ function initSwipeHandler(){
 
 function scrollToActiveMenu() {
     window.setTimeout(function(){
-        var e = $("#sidebar ul.topics li.active a")[0];
+        var e = document.querySelector( '#sidebar ul.topics li.active a' );
         if( e && e.scrollIntoView ){
             e.scrollIntoView({
                 block: 'center',
+            });
+        }
+    }, 10);
+}
+
+function scrollToFragment() {
+    if( !window.location.hash || window.location.hash.length <= 1 ){
+        return;
+    }
+    window.setTimeout(function(){
+        var e = document.querySelector( window.location.hash );
+        if( e && e.scrollIntoView ){
+            e.scrollIntoView({
+                block: 'start',
             });
         }
     }, 10);
@@ -431,8 +559,10 @@ var getUrlParameter = function getUrlParameter(sPageURL) {
 jQuery(function() {
     initArrowNav();
     initMermaid();
+    initSwagger();
     initMenuScrollbar();
     scrollToActiveMenu();
+    scrollToFragment();
     initLightbox();
     initImageStyles();
     initToc();
