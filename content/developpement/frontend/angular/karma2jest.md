@@ -1,5 +1,7 @@
 ---
 title: "Migration de Karma vers Jest"
+weight: 3
+tags: ["tests unitaires", "jest", "angular"]
 ---
 
 Angular est fourni par défaut avec Karma. Il est cependant très simple de passer de Karma à Jest.

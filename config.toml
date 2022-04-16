@@ -4,6 +4,10 @@ title = 'Ma documentation'
 theme = "relearn"
 
 [params]
+  # This controls whether submenus will be expanded (true), or collapsed (false) in the
+  # menu; if no setting is given, the first menu level is set to false, all others to true;
+  # this can be overridden in the pages frontmatter
+  alwaysopen = false
   # Author of the site, will be used in meta information
   author = "Quentin Pigné"
   # Description of the site, will be used in meta information
@@ -14,6 +18,8 @@ theme = "relearn"
   disableNextPrev = true
   # Change default color scheme with a variant one. Eg. can be "red", "blue", "green" or an array like [ "blue", "green" ].
   themeVariant = "blue"
+  # If set to true, the menu in the sidebar will be displayed in a collapsible tree view.
+  collapsibleMenu = true
 
 [outputs]
   home = [ "HTML", "RSS", "JSON" ]
