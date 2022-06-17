@@ -1,6 +1,6 @@
 ---
 title: "Migration de Karma vers Jest"
-weight: 3
+weight: 4
 tags: ["tests unitaires", "jest", "angular"]
 ---
 
@@ -118,3 +118,8 @@ Il est aussi possible d'ajouter un script au `package.json` pour lancer la suite
 Et lancer le avec la commande `npm run test:cov`.
 
 Le rapport de couverture de code doit être présent dans le dossier `coverage` à la racine du projet.
+
+## Références
+
+- [https://medium.com/angular-in-depth/migrate-your-angular-library-to-jest-faba9579591a](https://medium.com/angular-in-depth/migrate-your-angular-library-to-jest-faba9579591a)
+- [https://dev.to/this-is-angular/migrate-from-jasmine-to-jest-and-testing-in-angular-286i](https://dev.to/this-is-angular/migrate-from-jasmine-to-jest-and-testing-in-angular-286i)

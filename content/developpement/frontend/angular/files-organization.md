@@ -1,6 +1,6 @@
 ---
 title: "Organisation des fichiers"
-weight: 1
+weight: 2
 tags: ["angular"]
 ---
 

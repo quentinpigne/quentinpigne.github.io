@@ -1,6 +1,6 @@
 ---
 title: "Vues et manipulations du DOM"
-weight: 2
+weight: 3
 tags: ["angular", "dom"]
 ---
 
