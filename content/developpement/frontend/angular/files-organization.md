@@ -13,41 +13,60 @@ src
 |   |   |   |   +-- ...
 |   |   |   +-- pages
 |   |   |   |   +-- ...
-|   |   |   |   home.routing.module.ts
-|   |   |   |   home.module.ts
+|   |   |   +-- home-store
+|   |   |   |   home.actions.ts
+|   |   |   |   home.reducers.ts
+|   |   |   |   home.effects.ts
+|   |   |   |   home.selectors.ts
+|   |   |   |   home.state.ts
+|   |   |   |   home-store.module.ts
+|   |   |   home.routing.module.ts
+|   |   |   home.module.ts
 |   +-- core
+|   |   +-- core-store
+|   |   |   +-- actions
+|   |   |   |   user.actions.ts
+|   |   |   |   index.ts
+|   |   |   +-- reducers
+|   |   |   |   user.reducer.ts
+|   |   |   |   index.ts
+|   |   |   +-- effects
+|   |   |   |   user.effects.ts
+|   |   |   +-- selectors
+|   |   |   |   user.selectors.ts
+|   |   |   core-store.module.ts
 |   |   +-- shell
 |   |   |   +-- components
 |   |   |   |   +-- header
 |   |   |   |   |   header.component.[ts|spec.ts|html|scss]
 |   |   |   |   +-- footer
 |   |   |   |   |   footer.component.[ts|spec.ts|html|scss]
-|   |   |   |   shell.module.ts
-|   |   |   |   shell.component.[ts|spec.ts|html|scss]
+|   |   |   shell.module.ts
+|   |   |   shell.component.[ts|spec.ts|html|scss]
 |   |   +-- authentication
 |   |   +-- services
 |   |   +-- ...
-|   |   |   core.module.ts
+|   |   core.module.ts
 |   +-- shared
 |   |   +-- componentes
 |   |   +-- directives
 |   |   +-- pipes
-|   |   |   shared.module.ts
-|   |   app.module.ts
-|   |   app-routing.module.ts
-|   |   app.component.ts
-|   |   app.component.spec.ts
-|   |   app.component.scss
-|   |   app.component.html
+|   |   shared.module.ts
+|   app.module.ts
+|   app-routing.module.ts
+|   app.component.ts
+|   app.component.spec.ts
+|   app.component.scss
+|   app.component.html
 +-- assets
 +-- environments
-|   |   environment.prod.ts
-|   |   environment.ts
-|   index.html
-|   main.ts
-|   polyfills.ts
-|   styles.scss
-|   test.ts
+|   environment.prod.ts
+|   environment.ts
+index.html
+main.ts
+polyfills.ts
+styles.scss
+test.ts
 ```
 
 ## Modules
