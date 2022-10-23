@@ -208,6 +208,15 @@ Il est ainsi possible de "modifier" les méthodes internes à Ruby comme les mé
 
 ###### Méthodes "spéciales" et opérateurs
 
+* methode `class`
+
+La méthode `class`, appelée sur un objet, renvoie le Class de cet objet.
+
+```ruby
+s = "Ceci est un texte"
+s.class # String
+```
+
 * `<` et `>`
 
 Il est possible d'implémenter les opérateurs de supériorité et d'infériorité sur des objets en définissant ces méthodes qui prennent chacune l'élément sur lequel s'applique la comparaison :
@@ -219,3 +228,37 @@ class MaClass
   end
 end
 ```
+
+## L'héritage
+
+L'héritage se fait en Ruby avec le symbole `<`.
+
+```ruby
+class BaseClass
+  ...
+end
+
+class HeritedClass < BaseClass
+  ...
+end
+```
+
+Ainsi, *HeritedClass* "hérite" de toutes les méthodes et tous les attributs de *BaseClass*. Et il est aussi possible d'en ajouter de nouveaux ou de les surcharger. Dans ce cas, la méthode parente est accessible via le mot-clé `super`.
+
+{{% notice warning %}}
+En Ruby, `super` correspond bien à la **méthode** parente et non à l'objet parent. De plus, utiliser `super` **appelle** la méthode (par défaut, avec les même paramètres que la méthode surchargée).
+{{% /notice %}}
+
+```ruby
+class HeritedClass < BaseClass
+  def method(param)
+    methodValue = super # équivalent : baseMathodValue = super(param)
+    otherMethodValue = super(otherParam)
+    ...
+  end
+end
+```
+
+{{% notice info %}}
+De la même manière que la méthode `class`, appeler `class.superclass` donne des informations sur la classe de base. Si on remonte dans la hiérarchie, toutes les classe de base héritent de `Object` qui, elle-même, hérite de `BaseObject`.
+{{% /notice %}}
