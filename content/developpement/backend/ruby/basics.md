@@ -42,6 +42,18 @@ Affichage variable dans une string :
 "Ceci est une chaine de caractères contenant une #{variable}"
 ```
 
+Il est possible de déclarer des variables de manière globale en la plaçant en dehors de tout bloc et en utilisant le signe `$`
+
+```ruby
+$variableGlobale = "Hello, world !"
+```
+
+Et pour finir, il est possible de déclarer des constantes, en écrivant leur nom tout en majuscule.
+
+```ruby
+MA_CONSTANTE = 1
+```
+
 ### Entrées/Sorties
 `puts` affiche une chaîne de caractères à l'écran (avec saut de ligne)
 
