@@ -262,3 +262,89 @@ end
 {{% notice info %}}
 De la même manière que la méthode `class`, appeler `class.superclass` donne des informations sur la classe de base. Si on remonte dans la hiérarchie, toutes les classe de base héritent de `Object` qui, elle-même, hérite de `BaseObject`.
 {{% /notice %}}
+
+## Les exceptions
+
+* Lancement d'une exception
+
+En Ruby, une exception se lève avec la méthode `raise`.
+
+```ruby
+def method
+  raise if error # unhandled exception
+  raise "Il y a une erreur" if error # RuntimeError avec message
+  raise SpecificError "Il y a une erreur" if error # SpecificError avec message
+end
+```
+
+* Capture d'une exception
+
+Une exception peut être capturer entre un `begin` et un `rescue` (qui prend en paramètre le type d'exception qu'on veut capturer) :
+
+```ruby
+begin
+  method
+rescue SpecificError => e
+  puts e.to_s
+end
+```
+
+* Execution de code même si erreur
+
+Le mot-clé `ensure` permet d'exécuter du code même si une exception a été capturée :
+
+```ruby
+begin
+  method
+rescue SpecificError => e
+  puts e.to_s
+ensure
+  <instructions>
+end
+```
+
+* Créer une classe d'erreur
+
+```ruby
+class MonErreur < RuntimeError
+  def initialize(msg = "Message par défaut")
+    super
+  end
+end
+
+def method
+  raise MonErreur if error
+end
+```
+
+En général, on ne fait pas hériter les classes d'erreur de `RuntimeError` mais on crée une classe `Error` pour le module, qui hérite de `RuntimeError`, et ensuite les classes d'erreur héritent de cette `Error`. Cela permet de capturer en une seule fois toutes les erreurs possibles pour le module en question au niveau du `rescue` :
+
+```ruby
+module MonModule
+  class Erreur < RunimeError
+  end
+
+  class PremiereErreur < Erreur
+    def initialize(msg = "Message par défaut")
+      super
+    end
+  end
+
+  class DeuxiemeErreur < Erreur
+    def initialize(msg = "Message par défaut")
+      super
+    end
+  end
+
+  def method
+    raise PremiereErreur if error1
+    raise DeuxiemeErreur if error2
+  end
+end
+
+begin
+  MonModule::method
+rescue MonModule::Erreur => e
+  puts e.to_s
+end
+```
