@@ -1,7 +1,7 @@
 ---
-title: "Ruby"
+title: "Python"
 chapter: true
-weight: 2
+weight: 1
 ---
 
 {{% children depth="1" showhidden="true" %}}
