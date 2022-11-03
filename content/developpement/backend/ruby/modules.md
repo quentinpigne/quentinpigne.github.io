@@ -16,7 +16,7 @@ Un module fonctionne un peu comme une classe. À la différence qu'il ne peut ni
 module MonModule
   MA_CONSTANTE = 1
 
-  def self.uneMethode()
+  def self.une_methode()
     ...
   end
 
@@ -54,7 +54,7 @@ Le système de module permet aussi de faire de l'héritage "horizontal" car ils 
 
 ```ruby
 module Feature
-  def uneFonctionLieeALaFeature
+  def une_fonction_liee_a_la_feature
     ...
   end
 end
@@ -65,7 +65,7 @@ class MaClasse
 end
 
 objet = MaClass.new
-puts objet.uneFonctionLieeALaFeature
+puts objet.une_fonction_liee_a_la_feature
 ```
 
 Inclure un module dans une classe greffe automatiquement toutes les méthodes d'instance qui sont dans le module, au niveau de la classe.
@@ -87,7 +87,7 @@ Il est ainsi possible de modifier la classe dynamiquement à l'inclusion d'un mo
 ```ruby
 module Feature
   def self.included(base) # base = classe dans laquelle le module est inclus
-    def base.uneNouvelleMethode
+    def base.une_nouvelle_methode
       ...
     end
   end
@@ -100,7 +100,7 @@ end
 
 ```ruby
 module Feature
-  def uneMethode
+  def une_methode
     ...
   end
 end
@@ -110,14 +110,14 @@ class MaClasse
   ...
 end
 
-puts MaClass.uneMethode
+puts MaClass.une_methode
 ```
 
 `extend` peut aussi être appelé depuis une instance de classe :
 
 ```ruby
 module Feature
-  def uneMethode
+  def une_methode
     ...
   end
 end
@@ -128,7 +128,7 @@ end
 
 objet = MaClasse.new
 objet.extend(Feature)
-puts objet.uneMethode
+puts objet.une_methode
 ```
 
 Cela a pour effet de rajouter les méthodes du mixin dans l'instance, mais uniquement pour cette instance.

@@ -38,26 +38,26 @@ Les méthodes d'instance se définissent au sein de la classe comme des méthode
 
 ```ruby
 class MaClasse
-  def uneMethode
+  def une_methode
     <instructions>
   end
 end
 
 object = MaClasse.new
-object.uneMethode
+object.une_methode
 ```
 
 Il est possible d'appeler une autre méthode d'instance depuis une méthode comme on appellerait une fonction depuis l'exterieur de la classe. (Pas de `this`)
 
 ```ruby
 class MaClasse
-  def uneMethode(var)
+  def une_methode(var)
     <instructions>
   end
 
-  def uneAutreMethode
+  def une_autre_methode
     <instructions>
-    uneMethode(var)
+    une_methode(var)
     <instructions>
   end
 end
@@ -114,7 +114,7 @@ Les méthodes privées doivent être déclarées après le mot-clé `private`. E
 class MaClasse
   private
 
-  def uneMethode(var)
+  def une_methode(var)
     <instructions>
   end
 end
@@ -128,24 +128,24 @@ Les méthodes de classe ne sont pas rattachées à une instance de la classe et 
 
 ```ruby
 class MaClasse
-  def self.methodeClasse
+  def self.methode_classe
     <instructions>
   end
 end
 
-puts MaClasse.methodeClasse
+puts MaClasse.methode_classe
 ```
 
 Pour appeler une méthode de classe depuis une méthode d'instance, il faut utiliser `self.class.<nom_methode>`.
 
 ```ruby
 class MaClasse
-  def self.methodeClasse
+  def self.methode_classe
     <instructions>
   end
 
-  def uneMethode
-    self.class.methodeClasse
+  def une_methode
+    self.class.methode_classe
   end
 end
 ```
@@ -156,18 +156,18 @@ Les variables de classe se déclarent avec `@@`. Dans les méthodes de classe ou
 
 ```ruby
 class MaClasse
-  @@variableClasse = 'test'
+  @@variable_classe = 'test'
 
-  def self.methodeClasse
-    "#{@@variableClasse}"
+  def self.methode_classe
+    "#{@@variable_classe}"
   end
 
-  def uneMethode
-    "#{@@variableClasse}"
+  def une_methode
+    "#{@@variable_classe}"
   end
 end
 
-puts MaClasse.methodeClasse
+puts MaClasse.methode_classe
 ```
 
 ###### Ouverture des classes
@@ -178,12 +178,12 @@ Soit en créant une méthode de classe à l'exterieur de celle-ci :
 
 ```ruby
 class MaClasse
-  def uneMethode
+  def une_methode
     <instructions>
   end
 end
 
-def MaClass.methodeClasse
+def MaClass.methode_classe
   <instructions>
 end
 ```
@@ -192,13 +192,13 @@ Soit en réutilisant la même déclaration :
 
 ```ruby
 class MaClasse
-  def uneMethode
+  def une_methode
     <instructions>
   end
 end
 
 class MaClasse
-  def self.methodeClasse
+  def self.methode_classe
     <instructions>
   end
 end
@@ -252,8 +252,8 @@ En Ruby, `super` correspond bien à la **méthode** parente et non à l'objet pa
 ```ruby
 class HeritedClass < BaseClass
   def method(param)
-    methodValue = super # équivalent : baseMathodValue = super(param)
-    otherMethodValue = super(otherParam)
+    method_value = super # équivalent : method_value = super(param)
+    other_method_value = super(other_param)
     ...
   end
 end
@@ -321,7 +321,7 @@ En général, on ne fait pas hériter les classes d'erreur de `RuntimeError` mai
 
 ```ruby
 module MonModule
-  class Erreur < RunimeError
+  class Erreur < RuntimeError
   end
 
   class PremiereErreur < Erreur

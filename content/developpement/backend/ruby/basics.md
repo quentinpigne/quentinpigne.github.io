@@ -9,20 +9,24 @@ tags: ["ruby"]
 ### Types
 
 * Integer `1234`
-* String `'string'`
-* Boolean `true`et `false`
+* Float `3.14`
+* String `'string'` ou `"string"`
+* Boolean `true` et `false`
+
+En Ruby, le type *null* est `nil`.
 
 ###### Méthodes utiles pour convertir les types
 
-* to_i : conversion en Integer
-* to_s : conversion en String
+* `to_i` : conversion en Integer
+* `to_f` : conversion en Float
+* `to_s` : conversion en String
 
 ###### Vérifier qu'une variable est d'un certain type
 
 En Ruby, on vérifie rarement le type d'une variable, on utilise plutôt la méthode `respond_to?` afin de vérifier qu'on puisse lui appliquer une certaine méthode.
 
 ```ruby
-def toUp(text)
+def to_up(text)
   if text.respond_to?(:to_s)
     text.to_s.upcase
   end
@@ -31,30 +35,32 @@ end
 
 ### Déclaration d'une variable
 
-En Ruby les variables ont un typage faible et peuvent changer de type à volonté
+En Ruby, les variables ont un typage faible et peuvent changer de type à volonté.
 
 ```ruby
-maVariable = 'Chaine de caractères'
+ma_variable = 'Chaine de caractères'
 ```
 
-Affichage variable dans une string :
+Inclusion de variable dans une string :
+
 ```ruby
 "Ceci est une chaine de caractères contenant une #{variable}"
 ```
 
-Il est possible de déclarer des variables de manière globale en la plaçant en dehors de tout bloc et en utilisant le signe `$`
+Il est possible de déclarer des variables de manière globale en la plaçant en dehors de tout bloc et en utilisant le signe `$`.
 
 ```ruby
-$variableGlobale = "Hello, world !"
+$variable_globale = "Hello, world !"
 ```
 
-Et pour finir, il est possible de déclarer des constantes, en écrivant leur nom tout en majuscule.
+Et pour finir, il est possible de déclarer des constantes en écrivant leur nom tout en majuscule.
 
 ```ruby
 MA_CONSTANTE = 1
 ```
 
 ### Entrées/Sorties
+
 `puts` affiche une chaîne de caractères à l'écran (avec saut de ligne)
 
 `print` affiche une chaîne de caractères à l'écran (sans saut de ligne)
@@ -104,12 +110,14 @@ end
 
 `unless condition` est équivalent à `if !condition`
 
-Une condition if peut s'écrire sur une ligne
+Une condition if peut s'écrire sur une ligne :
 
 ```ruby
 puts "Condition vraie" if <condition>
 puts "Condition fausse" unless <condition>
 ```
+
+Il est possible de combiner les conditions avec `&&`, `||` et `!`.
 
 ### Bloc case-when
 
@@ -167,7 +175,7 @@ puts a # Hello
 
 ## Boucles
 
-### Boucle While
+### Boucle `while`
 
 ```ruby
 while <condition> # until !<condition>
@@ -175,7 +183,7 @@ while <condition> # until !<condition>
 end
 ```
 
-### Boucle For
+### Boucle `for`
 
 ```ruby
 for num in 1..10 # 1..10 = [1, 10] et 1...10 = [1, 10[
@@ -192,7 +200,7 @@ for num in 1..10
 end
 ```
 
-### Boucle Loop (Infinie)
+### Boucle `loop` (Infinie)
 
 ```ruby
 loop do
@@ -302,7 +310,7 @@ En Ruby, on ne teste pas le type d'un paramètre mais on tente directement de le
 
 ### Conventions de nommage
 
-Les caractères spéciaux sont autorisés dans les noms de fonction ainsi que les symboles comme '+', '-'... Traditionnellement, les fonctions possédant ces symboles implémentes les opérateurs correspondants.
+Les caractères spéciaux sont autorisés dans les noms de fonction ainsi que les symboles comme '+', '-'... Traditionnellement, les fonctions possédant ces symboles implémentent les opérateurs correspondants.
 
 * `?` : retourne un boolean
 * `!` : modifie l'objet
@@ -321,7 +329,7 @@ end
 
 ```ruby
 def nom_fonction(*params)
-  puts params.inspect
+  puts params.inspect # [param1, param2, ...]
 end
 ```
 
@@ -348,7 +356,7 @@ test { puts "A second text" }
 Un bloc peut être appelé plusieurs fois en mettant plusieurs `yield` dans la fonction.
 
 {{% notice warning %}}
-A partir du moment où on met un `yield` dans une fonction, celle-ci va obligatoirement attendre un paramètre de type bloc.
+À partir du moment où on met un `yield` dans une fonction, celle-ci va obligatoirement attendre un paramètre de type bloc.
 {{% /notice %}}
 
 ###### Passer un paramètre à un bloc
@@ -384,18 +392,18 @@ var = Proc.new { <instructions> }
 Pour être passé en tant que bloc à une fonction, un `Proc` doit être 'converti' en **bloc**. Cela se fait avec le signe `&`.
 
 ```ruby
-monProc = Proc.new { <instructions> }
+mon_proc = Proc.new { <instructions> }
 a = [1, 2, 3]
-a.map!(&monProc)
+a.map!(&mon_proc)
 ```
 
-* Appel direct d'un `Proc``
+* Appel direct d'un `Proc`
 
 Il est possible d'appeler à n'importe quel moment un Proc en utilisant la méthode `call` :
 
 ```ruby
-monProc = Proc.new { |param| <instructions> }
-monProc.call("param")
+mon_proc = Proc.new { |param| <instructions> }
+mon_proc.call("param")
 ```
 
 * Récupérer dans une fonction un bloc sous forme de `Proc`
@@ -403,11 +411,11 @@ monProc.call("param")
 Il est possible de récupérer un bloc sous forme de `Proc` dans une fonction à l'aide du même signe `&` :
 
 ```ruby
-def maFonction(&bloc) # ici, bloc est un Proc
+def ma_fonction(&bloc) # ici, bloc est un Proc
   bloc.call("param")
 end
 
-maFonction { |param| <instructions> }
+ma_fonction { |param| <instructions> }
 ```
 
 {{% notice info %}}
@@ -421,8 +429,8 @@ En Ruby, un lambda est très similaire à un `Proc`.
 Pour créer un lambda, il suffit de remplacer le `Proc.new` par `lambda` et lui passer un bloc.
 
 ```ruby
-monLambda = lambda { |param| <instructions> }
-puts monLambda.inspect # On se rend compte ici qu'un lambda est un Proc particulier
+mon_lambda = lambda { |param| <instructions> }
+puts mon_lambda.inspect # On se rend compte ici qu'un lambda est un Proc particulier
 ```
 
 Il s'utilise ensuite de la même façon qu'un `Proc`.
@@ -452,7 +460,7 @@ a_proc # Salut
 ###### Nouvelle syntaxe du lambda
 
 ```ruby
-monLambda = ->(<param>) { <instructions> }
+mon_lambda = ->(<param>) { <instructions> }
 ```
 
 ###### Syntaxe raccourcie pour un appel de méthode sur chaque élément passé à un bloc
