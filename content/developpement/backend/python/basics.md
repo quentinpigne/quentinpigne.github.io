@@ -349,3 +349,100 @@ Python supporte les fonctions anonymes, aussi appelées *lambda*.
 ```python
 lambda arguments: expression
 ```
+
+## Lire et écrire des fichiers
+
+###### Ouverture et fermeture d'un fichier
+
+En Python, il est possible d'ouvrir un fichier en lecture ou en écriture avec la méthode `open()`.
+
+```python
+f = open("myfile.csv")
+```
+
+Il est possible de préciser le mode dans lequel on souhaite ouvrir le fichier.
+
+```python
+f = open("myfile.csv") # This is the same as “rt” mode.
+f = open("myfile.csv", "w") # write in text mode
+f = open("myimage.png", "r+b") # read and write in binary mode
+```
+
+Voici la liste des options possibles :
+
+| Option | Description                                              |
+|--------|----------------------------------------------------------|
+| "r"    | read mode (default)                                      |
+| "w"    | write mode                                               |
+| "x"    | exclusive creation (fails if file already exists)        |
+| "t"    | text mode (default)                                      |
+| "b"    | binary mode                                              |
+| "a"    | appending data at the end (create file if doesn't exist) |
+| "+"    | update file (reading and writing)                        |
+
+Après utilisation, il est nécessaire de fermer le fichier à l'aide de la méthode `close()`.
+
+```python
+f = open("myfile.csv")
+f.close()
+```
+
+###### Syntaxe raccourcie pour l'utilisation d'un fichier
+
+Le mot-clé `with` permet d'ouvrir un bloc dans lequel un fichier est ouvert au automatiquement fermé à la fin.
+
+```python
+with open("myfile.csv") as f:
+  <instructions>
+```
+
+###### Lecture d'un fichier
+
+* Lecture complète sous forme de texte
+
+La méthode `read()` permet de lire l'entièreté d'un fichier sous la forme d'un string.
+
+```python
+with open("myfile.csv") as f:
+  content = f.read()
+```
+
+{{% notice info %}}
+La méthode `read()` retourne une ligne vide quand elle arrive à la fin du fichier. Pour la supprimer il est possible d'utiliser la méthode `rstrip()`
+{{% /notice %}}
+
+* Lecture ligne par ligne
+
+Il est possible de parcourir un fichier ligne par ligne en itérant dessus avec une boucle `for`
+
+```python
+with open("myfile.csv") as f:
+  for line in f:
+    print(line)
+```
+
+{{% notice info %}}
+Comme précédemment, cette méthode retourne une ligne vide après chaque ligne lue. Pour la supprimer il est possible d'utiliser la méthode `rstrip()`
+{{% /notice %}}
+
+* Récupération du contenu sous forme de liste
+
+La méthode `readlines()` permet de récupérer l'entièreté des lignes du fichier sous forme de liste.
+
+```python
+with open("myfile.csv") as f:
+  lines = f.readlines()
+```
+
+###### Écriture dans un fichier
+
+La méthode `write()` permet d'écrire une ligne dans un fichier.
+
+```python
+with open("myfile.csv") as f:
+  f.write("new line")
+```
+
+{{% notice info %}}
+La méthode `write()` n'ajoute pas de retour à la ligne en fin de texte. Il est nécessaire, si besoin, d'ajouter manuellemenet un **\n**.
+{{% /notice %}}
