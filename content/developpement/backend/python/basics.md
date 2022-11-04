@@ -26,7 +26,7 @@ En Python, le type *null* est `None`.
 En Python les variables ont un typage faible et peuvent changer de type à volonté.
 
 ```python
-maVariable = "Chaine de caractères"
+ma_variable = "Chaine de caractères"
 ```
 
 ###### Inclusion de variable dans une string :
@@ -307,19 +307,19 @@ En l'absence d'instruction **return**, une fonction renverra toujours `None`.
 En Python, il est possible de retourner plusieurs valeurs d'une fonction. Il suffit de les séparer par des virgules et le retour est ainsi récupérable sous forme de tuple.
 
 ```python
-def testFunc(num1, num2):
+def test_func(num1, num2):
   return num1, num2
 
-a, b = testFunc(5, 10)
+a, b = test_func(5, 10)
 ```
 
 ###### Paramètres nommés
 
 ```python
-def testFunc(num1, num2):
+def test_func(num1, num2):
   return num1, num2
 
-a, b = testFunc(num1=5, num2=10)
+a, b = test_func(num1=5, num2=10)
 ```
 
 ###### Paramètres optionnels
@@ -327,15 +327,15 @@ a, b = testFunc(num1=5, num2=10)
 Il est possible de rendre un paramètre optionnel en précisant sa valeur par defaut
 
 ```python
-def testFunc(num1, num2=10):
+def test_func(num1, num2=10):
   return num1, num2
 
-a, b = testFunc(5)
+a, b = test_func(5)
 ```
 
 ###### Liste de paramètres
 
-```ruby
+```python
 def nom_fonction(*args)
   print(type(args)) # <class 'tuple'>
 ```
@@ -360,7 +360,7 @@ En Python, il est possible d'ouvrir un fichier en lecture ou en écriture avec l
 f = open("myfile.csv")
 ```
 
-Il est possible de préciser le mode dans lequel on souhaite ouvrir le fichier.
+Il peut être utile de préciser le mode dans lequel on souhaite ouvrir le fichier :
 
 ```python
 f = open("myfile.csv") # This is the same as “rt” mode.
@@ -387,9 +387,7 @@ f = open("myfile.csv")
 f.close()
 ```
 
-###### Syntaxe raccourcie pour l'utilisation d'un fichier
-
-Le mot-clé `with` permet d'ouvrir un bloc dans lequel un fichier est ouvert au automatiquement fermé à la fin.
+Le mot-clé `with` permet d'ouvrir un bloc dans lequel un fichier est ouvert au début et automatiquement fermé à la fin.
 
 ```python
 with open("myfile.csv") as f:
