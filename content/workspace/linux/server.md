@@ -130,6 +130,28 @@ La récupération des dotfiles sur le serveur se fait avec la commande :
 git clone --bare --branch server git@github.com:quentinpigne/dotfiles.git $HOME/.dotfiles
 ```
 
+À ce stade, la récupération des dotfiles reste incomplète du fait de conflits avec des fichiers déjà présents (comme .zshrc par exemple).
+
+On va commencer par ajouter l'alias `dotfiles` au fichier `.zshrc` :
+
+```bash
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> .zshrc
+source .zshrc
+```
+
+Puis on configure Git pour qu'il n'affiche pas les fichiers non inclus :
+
+```bash
+dotfiles config --local status.showUntrackedFiles no
+```
+
+Pour finir, on reset les dotfiles afin de supprimer les fichiers en conflit puis on re-checkout la branche server.
+
+```bash
+dotfiles reset --hard HEAD
+dotfiles checkout server
+```
+
 Plus d'informations sur [la page dédiée aux dotfiles]({{< ref "/workspace/dotfiles" >}}).
 
 ## Installation de NVim
@@ -142,7 +164,7 @@ sudo apt-get update
 sudo apt-get install neovim
 ```
 
-On va ensuite installer la distribution [AstrNvim](https://astronvim.com/) avec la commande :
+On va ensuite installer la distribution [AstroNvim](https://astronvim.com/) avec la commande :
 
 ```bash
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
@@ -187,4 +209,10 @@ Et enfin, on installe les paquets de Docker :
 
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Il est ensuite nécessaire d'ajouter l'utilisateur au groupe `docker` afin d'avoir les bonnes permissions.
+
+```bash
+sudo usermod -aG docker $USER
 ```
