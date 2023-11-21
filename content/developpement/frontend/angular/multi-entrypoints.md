@@ -1,6 +1,6 @@
 ---
 title: "Librairies à points d'entrée multiples"
-weight: 6
+weight: 7
 tags: ["angular"]
 ---
 

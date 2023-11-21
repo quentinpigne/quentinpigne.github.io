@@ -1,6 +1,6 @@
 ---
 title: "Migration de Karma vers Jest"
-weight: 5
+weight: 6
 tags: ["tests unitaires", "jest", "angular"]
 ---
 

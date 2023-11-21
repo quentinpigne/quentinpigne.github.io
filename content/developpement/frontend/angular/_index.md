@@ -1,7 +1,7 @@
 ---
 title: "Angular"
 chapter: true
-wight: 1
+weight: 1
 ---
 
 {{% children depth="1" showhidden="true" %}}
