@@ -1,7 +1,7 @@
 ---
-title: "Linux"
+title: 'Git'
 chapter: true
-weight: 3
+weight: 2
 ---
 
 {{% children depth="3" showhidden="true" %}}
