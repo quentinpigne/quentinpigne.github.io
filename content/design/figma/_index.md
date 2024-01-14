@@ -1,7 +1,7 @@
 ---
 title: "Figma"
 chapter: true
-weight: 1
+weight: 2
 ---
 
 {{% children depth="1" showhidden="true" %}}
