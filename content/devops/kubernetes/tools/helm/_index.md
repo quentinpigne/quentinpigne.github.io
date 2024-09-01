@@ -1,6 +1,7 @@
 ---
 title: "Helm"
 weight: 1
+tags: ["kubernetes", "helm"]
 ---
 
 {{% children depth="1" showhidden="true" %}}
