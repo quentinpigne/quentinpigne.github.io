@@ -1,6 +1,6 @@
 ---
 title: "Ressources"
-weight: 4
+weight: 5
 tags: ["kubernetes"]
 ---
 

@@ -32,6 +32,14 @@ Parmi toutes ses fonctionnalités, Kubernetes permet :
 
 ## Premiers pods, déploiements, services et scaling
 
+{{% notice info %}}
+Si on souhaite lancer des pods sur les noeuds maîtres, il est nécessaire de supprimer les *taints* correspondants sur ceux-ci :
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/master-
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
+{{% /notice %}}
+
 {{% notice warning %}}
 L'utilisation de `kubectl run` et `kubectl create` n'est pas conseillé. Il est préférable d'utiliser des fichiers descriptifs en Yaml.
 {{% /notice %}}
