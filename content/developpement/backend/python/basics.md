@@ -21,6 +21,19 @@ En Python, le type *null* est `None`.
 * `float()` : conversion en Float
 * `str()` : conversion en String
 
+{{% notice info %}}
+La fonction `type()` permet de connaître le type d'une variable.
+{{% /notice %}}
+
+{{% notice note %}}
+Afin de mieux documenter le code, il est possible d'annoter les fonctions des types de paramètres et de retour.
+
+```python
+def greet(name: str) -> str:
+  return name
+```
+{{% /notice %}}
+
 ### Déclaration d'une variable
 
 En Python les variables ont un typage faible et peuvent changer de type à volonté.
@@ -94,6 +107,20 @@ pouvant tenir sur plusieurs lignes.
 """
 ```
 
+* Docstrings
+
+Ces mêmes commentaires, entourés de `"""`, lorsqu'ils sont placés comme première déclaration d'un module, avant une fonction, une classe ou une définition de méthode, sont appelés *docstrings* et deviennent l'attribut spécial `__doc__` de l'objet.
+
+```python
+"""
+Ceci est une docstring (accessible via `help()` et `__doc__`).
+"""
+def function():
+  return 'Hello'
+```
+
+Plus d'infos [ici](https://peps.python.org/pep-0257/#what-is-a-docstring)
+
 ## Conditions
 
 ### Bloc if-elif-else
@@ -128,11 +155,35 @@ else:
   handle_false() # Run if didn't exit loop with break
 ```
 
+###### Boucle `while-else`
+
+```python
+i = 0
+while i < 10:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+else:
+  print("the `while` loop did NOT exited early")
+```
+
 ### Boucle `for`
 
 ```python
 for x in range(5): # range(5) = 0, 1, 2, 3, 4
   print(x)
+```
+
+###### Boucle `for-else`
+
+```python
+for i in range(5):
+  print(i)
+  # if i == 3:
+  #   break
+else:
+  print("the `for` loop did NOT exited early")
 ```
 
 ### Opérations sur les boucles
@@ -348,6 +399,31 @@ Python supporte les fonctions anonymes, aussi appelées *lambda*.
 
 ```python
 lambda arguments: expression
+```
+
+###### Fonctions de fonctions (curryfication)
+
+```python
+def greeter(greet_word: str):
+  def greet(name: str) -> str:
+    return f"{greet_word}, {name}!"
+  return greet
+
+g = greeter("Salut")
+g("Sarah") # 'Salut, Sarah!'
+greeter("Bienvenue")("Michel") # 'Bienvenue, Michel!'
+```
+
+## Gérer les erreurs et les exceptions
+
+En Python, les exceptions sont gérées à l'aide du bloc `try/except`.
+
+```python
+try:
+  x = int(input("Entrez un nombre entier : "))
+  break
+except ValueError:
+  print("Oops ! Ce n'est pas un nombre entier. Essayez encore...")
 ```
 
 ## Lire et écrire des fichiers
