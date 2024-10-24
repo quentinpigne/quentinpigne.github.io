@@ -18,6 +18,8 @@ Un bon pipeline est divisé en 3 macro-étapes :
 
 D'autres étapes peuvent être ajoutées en fonction des besoins, comme un alerting. Mais le but premier d'un CI/CD et de s'assurer que le code soit testé et parte en production.
 
+{{< figure src="https://github.com/ByteByteGoHq/system-design-101/blob/main/images/ci-cd-pipeline.jpg?raw=true" >}}
+
 ## Les différents stage d'une CI/CD
 
 Un pipeline CI/CD est divisé en "stages", où chaque "stage" accomplit une série de tâches spécifiques. Nous allons voir les étapes essentielles d'un pipeline CI/CD.
@@ -36,7 +38,13 @@ Le pipeline checkout le code source à ce commit et démarre le process.
 
 ### Compile
 
-### Quality
+Dans le cadre d'un développement dans un langage compilé tel que Java, la première chose à faire est de compiler le programme.
+
+Cela signifie que l'outil de CI doit avoir accès à l'outil de build utilisé pour compiler le programme. Dans le cas de Java, par exemple, il peut s'agir de Maven ou Gradle.
+
+Idéalement, ce stage doit s'exécuter dans un environnement vierge.
+
+### Verify
 
 #### Linter
 
