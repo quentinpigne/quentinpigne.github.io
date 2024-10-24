@@ -31,7 +31,7 @@ for file in *.[ext]; do mv "$file" "${file%%.[ext]}"; done
 - Récupérer la liste des services s'exécutant sur le système :
 
 ```bash
-sudo systemctl list-unit
+sudo systemctl --type=service --state=running
 ```
 
 - Rechargement du daemon après modification d'un fichier de configuration :

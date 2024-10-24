@@ -1,6 +1,6 @@
 ---
 title: "NeoVim"
-weight: 3
+weight: 4
 tags: ["workspace", "nvim"]
 ---
 
