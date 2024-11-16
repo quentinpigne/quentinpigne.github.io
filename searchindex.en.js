@@ -9,8 +9,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement",
-    "content": "Java Maven Python Bases du langage Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins",
-    "description": "Java Maven Python Bases du langage Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins",
+    "content": "Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins",
+    "description": "Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins",
     "tags": [],
     "title": "Back-end",
     "uri": "/developpement/backend/index.html"
@@ -234,8 +234,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation",
-    "content": "C4 Model",
-    "description": "C4 Model",
+    "content": "C4 Model Domain Driven Design",
+    "description": "C4 Model Domain Driven Design",
     "tags": [],
     "title": "Architecture",
     "uri": "/architecture/index.html"
@@ -264,11 +264,21 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end",
-    "content": "CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
-    "description": "CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
+    "content": "CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
+    "description": "CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
     "tags": [],
     "title": "CSS - SCSS",
     "uri": "/developpement/frontend/css-scss/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Architecture",
+    "content": "Introduction / Définition Les logiciels doivent rester pratiques, utiles et ergonomiques. Le Domain Driven Design est une approche de conception qui vise à accorder de l’importance au domaine métier, à travers des design patterns de conception.\nRéférences https://cdiese.fr/domain-driven-design-en-5-min/ https://lesdieuxducode.com/blog/2019/7/introduction-au-domain-driven-design https://khalilstemmler.com/articles/typescript-domain-driven-design/ddd-frontend/",
+    "description": "Introduction / Définition Les logiciels doivent rester pratiques, utiles et ergonomiques. Le Domain Driven Design est une approche de conception qui vise à accorder de l’importance au domaine métier, à travers des design patterns de conception.\nRéférences https://cdiese.fr/domain-driven-design-en-5-min/ https://lesdieuxducode.com/blog/2019/7/introduction-au-domain-driven-design https://khalilstemmler.com/articles/typescript-domain-driven-design/ddd-frontend/",
+    "tags": [
+      "Domain Driven Design"
+    ],
+    "title": "Domain Driven Design",
+    "uri": "/architecture/domain-driven-design/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Design",
@@ -280,8 +290,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement",
-    "content": "Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
-    "description": "Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
+    "content": "Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
+    "description": "Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
     "tags": [],
     "title": "Front-end",
     "uri": "/developpement/frontend/index.html"
@@ -365,6 +375,17 @@ var relearn_searchindex = [
     "uri": "/devops/kubernetes/resources/pods/index.html"
   },
   {
+    "breadcrumb": "Ma documentation \u003e Développement \u003e Back-end \u003e Python",
+    "content": "Classes Création et instanciation d’une classe Un classe se crée à l’aide du mot clé class puis s’instancie en utilisant directement son nom.\nclass MaClasse: ... object = MaClasse() Variables d’instance et constructeur Contrairement à d’autres langages, en Python, les attributs n’ont pas besoin d’être déclarés en avance. Ils peuvent simplement être définis au niveau du constructeur, lui-même définit avec la méthode __init__.\nclass MaClasse: def __init__(self, var1, var2 = \"value2\") self.var1 = var1 self.var2 = var2 object = MaClasse(var1 = \"value1\") Méthodes d’instance Les méthodes d’instance se définissent au sein de la classe comme des méthodes classiques et suivent les même conventions.\nInfo En Python, les méthodes d’instance incluent toujours en 1er paramètre l’instance de la classe, noté par convention self. Il n’y a pas de this “implicite”.\nclass MaClasse: def une_methode(self): \u003cinstructions\u003e object = MaClasse() object.une_methode() Il est possible d’appeler une autre méthode d’instance depuis une méthode à l’aide de self :\nclass MaClasse: def une_methode(self, var): \u003cinstructions\u003e def une_autre_methode(self): \u003cinstructions\u003e self.une_methode(var) \u003cinstructions\u003e Méthodes privées Python n’a pas de notion de scope et donc de méthodes ou d’attributs privés. Cependant, par convention les attributs et méthodes commençant par un underscore (_) sont considérés comme privés.\nclass MaClasse: def __init__(self): _attribut_prive = 1 def _methode_privee(self): \u003cinstructions\u003e",
+    "description": "Classes Création et instanciation d’une classe Un classe se crée à l’aide du mot clé class puis s’instancie en utilisant directement son nom.\nclass MaClasse: ... object = MaClasse() Variables d’instance et constructeur Contrairement à d’autres langages, en Python, les attributs n’ont pas besoin d’être déclarés en avance. Ils peuvent simplement être définis au niveau du constructeur, lui-même définit avec la méthode __init__.\nclass MaClasse: def __init__(self, var1, var2 = \"value2\") self.var1 = var1 self.var2 = var2 object = MaClasse(var1 = \"value1\") Méthodes d’instance Les méthodes d’instance se définissent au sein de la classe comme des méthodes classiques et suivent les même conventions.",
+    "tags": [
+      "Python",
+      "Poo"
+    ],
+    "title": "Programmation Orientée Objet",
+    "uri": "/developpement/backend/python/poo/index.html"
+  },
+  {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Back-end \u003e Ruby",
     "content": "Classes Création et instanciation d’une classe Un classe se crée à l’aide du mot clé class puis s’instencie avec la méthode new.\nclass MaClasse ... end object = MaClasse.new puts object.inspect #\u003cMaClasse:id\u003e Variables d’instance et constructeur En Ruby, les variables d’instance sont symbolisées par un @ et sont définit directement au niveau du constructeur, lui-même définit avec la méthode initialize.\nclass MaClasse def initialize(var1, var2) @var1 = var1 @var2 = var2 end end Méthodes d’instance Les méthodes d’instance se définissent au sein de la classe comme des méthodes classiques et suivent les même conventions. (nommage, ? si renvoie booléen, ! si modifie l’objet…)\nclass MaClasse def une_methode \u003cinstructions\u003e end end object = MaClasse.new object.une_methode Il est possible d’appeler une autre méthode d’instance depuis une méthode comme on appellerait une fonction depuis l’exterieur de la classe. (Pas de this)\nclass MaClasse def une_methode(var) \u003cinstructions\u003e end def une_autre_methode \u003cinstructions\u003e une_methode(var) \u003cinstructions\u003e end end Setter et Getter Methode naïve class MaClasse def initialize(var) @var = var end def var() @var end def var=(var) @var = var end end object = MaClasse.new object.var = \"test\" puts object.var Utilisation de attr_accessor, attr_reader et attr_writer class MaClasse attr_accessor :var def initialize(var) @var = var end end object = MaClasse.new object.var = \"test\" puts object.var Ces 3 méthodes sont en fait des méthodes de classes qui permettent de créer les getter et setter qui est appelée statiquement à l’intérieur de la classe.\nMéthodes privées Les méthodes privées doivent être déclarées après le mot-clé private. Elles restent accessibles à l’intérieur de la classe.\nclass MaClasse private def une_methode(var) \u003cinstructions\u003e end end Méthodes et Variables de classe Méthodes de classe Les méthodes de classe ne sont pas rattachées à une instance de la classe et se déclarent avec le mot-clé self.\nclass MaClasse def self.methode_classe \u003cinstructions\u003e end end puts MaClasse.methode_classe Pour appeler une méthode de classe depuis une méthode d’instance, il faut utiliser self.class.\u003cnom_methode\u003e.\nclass MaClasse def self.methode_classe \u003cinstructions\u003e end def une_methode self.class.methode_classe end end Variables de classe Les variables de classe se déclarent avec @@. Dans les méthodes de classe ou d’instance, on accède toujours aux variables de classe directement.\nclass MaClasse @@variable_classe = 'test' def self.methode_classe \"#{@@variable_classe}\" end def une_methode \"#{@@variable_classe}\" end end puts MaClasse.methode_classe Ouverture des classes En Ruby, les classes restent toujours ouvertes, il est donc possible de les modifier après leur déclaration.\nSoit en créant une méthode de classe à l’exterieur de celle-ci :\nclass MaClasse def une_methode \u003cinstructions\u003e end end def MaClass.methode_classe \u003cinstructions\u003e end Soit en réutilisant la même déclaration :\nclass MaClasse def une_methode \u003cinstructions\u003e end end class MaClasse def self.methode_classe \u003cinstructions\u003e end end Il est ainsi possible de “modifier” les méthodes internes à Ruby comme les méthodes de la classe String par exemple…\nMéthodes “spéciales” et opérateurs methode class La méthode class, appelée sur un objet, renvoie le Class de cet objet.\ns = \"Ceci est un texte\" s.class # String \u003c et \u003e Il est possible d’implémenter les opérateurs de supériorité et d’infériorité sur des objets en définissant ces méthodes qui prennent chacune l’élément sur lequel s’applique la comparaison :\nclass MaClass def \u003c(elem) \u003cinstructions\u003e end end L’héritage L’héritage se fait en Ruby avec le symbole \u003c.\nclass BaseClass ... end class HeritedClass \u003c BaseClass ... end Ainsi, HeritedClass “hérite” de toutes les méthodes et tous les attributs de BaseClass. Et il est aussi possible d’en ajouter de nouveaux ou de les surcharger. Dans ce cas, la méthode parente est accessible via le mot-clé super.\nWarning En Ruby, super correspond bien à la méthode parente et non à l’objet parent. De plus, utiliser super appelle la méthode (par défaut, avec les même paramètres que la méthode surchargée).\nclass HeritedClass \u003c BaseClass def method(param) method_value = super # équivalent : method_value = super(param) other_method_value = super(other_param) ... end end Info De la même manière que la méthode class, appeler class.superclass donne des informations sur la classe de base. Si on remonte dans la hiérarchie, toutes les classe de base héritent de Object qui, elle-même, hérite de BaseObject.\nLes exceptions Lancement d’une exception En Ruby, une exception se lève avec la méthode raise.\ndef method raise if error # unhandled exception raise \"Il y a une erreur\" if error # RuntimeError avec message raise SpecificError \"Il y a une erreur\" if error # SpecificError avec message end Capture d’une exception Une exception peut être capturer entre un begin et un rescue (qui prend en paramètre le type d’exception qu’on veut capturer) :\nbegin method rescue SpecificError =\u003e e puts e.to_s end Execution de code même si erreur Le mot-clé ensure permet d’exécuter du code même si une exception a été capturée :\nbegin method rescue SpecificError =\u003e e puts e.to_s ensure \u003cinstructions\u003e end Créer une classe d’erreur class MonErreur \u003c RuntimeError def initialize(msg = \"Message par défaut\") super end end def method raise MonErreur if error end En général, on ne fait pas hériter les classes d’erreur de RuntimeError mais on crée une classe Error pour le module, qui hérite de RuntimeError, et ensuite les classes d’erreur héritent de cette Error. Cela permet de capturer en une seule fois toutes les erreurs possibles pour le module en question au niveau du rescue :\nmodule MonModule class Erreur \u003c RuntimeError end class PremiereErreur \u003c Erreur def initialize(msg = \"Message par défaut\") super end end class DeuxiemeErreur \u003c Erreur def initialize(msg = \"Message par défaut\") super end end def method raise PremiereErreur if error1 raise DeuxiemeErreur if error2 end end begin MonModule::method rescue MonModule::Erreur =\u003e e puts e.to_s end",
     "description": "Classes Création et instanciation d’une classe Un classe se crée à l’aide du mot clé class puis s’instencie avec la méthode new.\nclass MaClasse ... end object = MaClasse.new puts object.inspect #\u003cMaClasse:id\u003e Variables d’instance et constructeur En Ruby, les variables d’instance sont symbolisées par un @ et sont définit directement au niveau du constructeur, lui-même définit avec la méthode initialize.\nclass MaClasse def initialize(var1, var2) @var1 = var1 @var2 = var2 end end Méthodes d’instance Les méthodes d’instance se définissent au sein de la classe comme des méthodes classiques et suivent les même conventions. (nommage, ? si renvoie booléen, ! si modifie l’objet…)",
@@ -377,8 +398,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Back-end",
-    "content": "Bases du langage Data Science",
-    "description": "Bases du langage Data Science",
+    "content": "Bases du langage Programmation Orientée Objet Data Science",
+    "description": "Bases du langage Programmation Orientée Objet Data Science",
     "tags": [],
     "title": "Python",
     "uri": "/developpement/backend/python/index.html"
@@ -403,8 +424,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation",
-    "content": "Back-end Java Maven Python Bases du langage Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
-    "description": "Back-end Java Maven Python Bases du langage Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques",
+    "content": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
+    "description": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
     "tags": [],
     "title": "Développement",
     "uri": "/developpement/index.html"
@@ -561,6 +582,16 @@ var relearn_searchindex = [
     "uri": "/design/index.html"
   },
   {
+    "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e CSS - SCSS",
+    "content": "Références https://www.joshwcomeau.com/css/designing-shadows/",
+    "description": "Références https://www.joshwcomeau.com/css/designing-shadows/",
+    "tags": [
+      "Css"
+    ],
+    "title": "Faire de belles ombres en CSS",
+    "uri": "/developpement/frontend/css-scss/shadows/index.html"
+  },
+  {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e Angular",
     "content": "NgRx NgXs StateAdapt",
     "description": "NgRx NgXs StateAdapt",
@@ -699,6 +730,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Tag :: Dom",
     "uri": "/tags/dom/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Domain Driven Design",
+    "uri": "/tags/domain-driven-design/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Tags",
