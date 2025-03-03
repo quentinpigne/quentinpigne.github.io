@@ -205,8 +205,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation",
-    "content": "Cette rubrique présente les différents articles liés à l’environnement de travail.\nGestion des fichiers de config Git Sparse checkout et Sparse index Linux Installation d'un serveur Ubuntu Commandes utiles RedHat NeoVim Windows",
-    "description": "Cette rubrique présente les différents articles liés à l’environnement de travail.\nGestion des fichiers de config Git Sparse checkout et Sparse index Linux Installation d'un serveur Ubuntu Commandes utiles RedHat NeoVim Windows",
+    "content": "Cette rubrique présente les différents articles liés à l’environnement de travail.\nGestion des fichiers de config Git Sparse checkout et Sparse index NeoVim Raccourcis clavier Linux Installation d'un serveur Ubuntu Commandes utiles RedHat Windows",
+    "description": "Cette rubrique présente les différents articles liés à l’environnement de travail.\nGestion des fichiers de config Git Sparse checkout et Sparse index NeoVim Raccourcis clavier Linux Installation d'un serveur Ubuntu Commandes utiles RedHat Windows",
     "tags": [],
     "title": "Poste de travail",
     "uri": "/workspace/index.html"
@@ -220,6 +220,17 @@ var relearn_searchindex = [
     ],
     "title": "Raccourcis clavier",
     "uri": "/design/figma/shortcuts/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Poste de travail \u003e NeoVim",
+    "content": "Modes i: insertion (au niveau du curseur)\nI: insertion au début de la ligne\na: insertion (après le curseur)\nA: insertion à la fin de la ligne\no: insertion (nouvelle ligne en dessous)\nO: insertion (nouvelle ligne au-dessus)\ns: insertion après suppression du caractère courant\nS: insertion après suppression de la ligne\nv: visuel au niveau du curseur\nV: visuel au niveau de la ligne\nCtrl+v: visuel bloc\nr: remplacer le caractère courant\nR: remplacer\nESC: retour au mode normal (commande)\nFonctionnement global {operator}{count}{motion} ou {count}{operator}{motion}\noperator désigne l’action qu’on veut effectuer (supprimer, changer, copier, formatter…) count désigne le nombre de fois que l’on veut effectuer l’action motion désigne le morceau de texte sur lequel on veut effectuer l’action Par exemple, pour supprimer 2 mots on peut écrire : d2w (delete 2 words)\nDéplacements h, j, k, l: déplacements gauche, bas, haut, droite\nw: déplacement vers le début du mot suivant (séparé par un espace/une ponctuation)\nW: déplacement vers le début du mot suivant (séparé par un espace)\ne: déplacement vers la fin du mot suivant (séparé par un espace/une ponctuation)\nE: déplacement vers la fin du mot suivant (séparé par un espace)\nb: déplacement vers le début du mot précédent (séparé par un espace/une ponctuation)\nB: déplacement vers le début du mot précédent (séparé par un espace)\n$: déplacement vers la fin d’une ligne\n0: déplacement vers le début d’une ligne\n^: déplacement vers le premier caractère non-espace d’une ligne\nf{char}: saut vers le caractère spécifié\nF{char}: saut vers le caractère spécifié en arrière\n(: déplacement vers le début d’un bloc\n): déplacement vers la fin d’un bloc\n{: déplacement vers le début d’un paragraphe\n}: déplacement vers la fin d’un paragraphe\nCtrl + d: déplacement vers le bas d’une moitié d’une page\nCtrl + u: déplacement vers le haut d’une moitié d’une page\nCtrl + f: déplacement vers le bas d’une page\nCtrl + b: déplacement vers le haut d’une page\ngg: déplacement vers le début d’un fichier\nG: déplacement vers la fin d’un fichier\ngd: déplacement vers la définition\n:{numero}: déplacement vers la ligne spécifiée\nModifier cw: changer un mot ciw: changer un mot depuis l’intérieur (change inner word) s: remplacer un caractère y: copier la sélection (yy pour copier une ligne complète) p: coller la sélection (après le curseur) P: coller la sélection (avant le curseur) yi{(), {}, []}: copier le contenu de la parenthèse, de la boucle ou de l’array (excl.) ya{(), {}, []}: copier le contenu de la parenthèse, de la boucle ou de l’array (incl.) di{(), {}, []}: supprimer le contenu de la parenthèse, de la boucle ou de l’array (excl.) di{(), {}, []}: supprimer le contenu de la parenthèse, de la boucle ou de l’array (incl.) dd: supprimer la ligne d$: supprimer jusqu’à la fin de la ligne d0: supprimer jusqu’au début de la ligne di{w, s, p}: supprimer le mot, la phrase ou le paragraphe dt{char}: supprimer jusqu’au caractère spécifié x: supprimer le caractère sous le curseur X: supprimer le caractère avant le curseur History u: annuler Ctrl + r: rétablir .: répéter l’opération Navigation /: chercher un mot (n prochaine occurrence, Shift_N occurrence précédente) ?: chercher un mot en sens inverse (n prochaine occurrence, Shift_N occurrence précédente) *: chercher le mot courant #: chercher le mot courant en sens inverse m{a-z}: marquer le mot courant \\{a-z}: aller à la marque Références https://www.malekal.com/raccourcis-clavier-commandes-vim/#Modifier_le_texte_dans_vim https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/editing-like-magic-with-vim-operators/",
+    "description": "Modes i: insertion (au niveau du curseur)\nI: insertion au début de la ligne\na: insertion (après le curseur)\nA: insertion à la fin de la ligne\no: insertion (nouvelle ligne en dessous)\nO: insertion (nouvelle ligne au-dessus)\ns: insertion après suppression du caractère courant\nS: insertion après suppression de la ligne\nv: visuel au niveau du curseur\nV: visuel au niveau de la ligne\nCtrl+v: visuel bloc\nr: remplacer le caractère courant",
+    "tags": [
+      "Workspace",
+      "Neovim"
+    ],
+    "title": "Raccourcis clavier",
+    "uri": "/workspace/neovim/shortcuts/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Poste de travail \u003e Git",
@@ -439,14 +450,6 @@ var relearn_searchindex = [
     "uri": "/devops/docker/index.html"
   },
   {
-    "breadcrumb": "Ma documentation \u003e Poste de travail",
-    "content": "Installation d'un serveur Ubuntu Commandes utiles RedHat NeoVim",
-    "description": "Installation d'un serveur Ubuntu Commandes utiles RedHat NeoVim",
-    "tags": [],
-    "title": "Linux",
-    "uri": "/workspace/linux/index.html"
-  },
-  {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Back-end \u003e Ruby",
     "content": "Les modules Définition et création Il est possible de créer un module avec le mot-clé module.\nUn module fonctionne un peu comme une classe. À la différence qu’il ne peut ni être instancié ni hérité. Il peut en revanche contenir des constantes, des variables, des méthodes (toujours avec self) ou des classes.\nmodule MonModule MA_CONSTANTE = 1 def self.une_methode() ... end class MaClasse ... end end Inclusion de modules tiers Tous les modules ne sont pas inclus par defaut, il est possible d’inclure des modules tiers avec le mot-clé require.\nrequire 'date' Info L’inclusion avec le mot-clé require ne concerne que le gems installées globalement. Pour inclure un fichier dont le chemin est relatif au fichier courant, il faut utiliser le mot-clé require_relative.\nrequire_relative 'fichier_local' Namespaces Pour éviter les doublons de classes ou de méthodes, il est possible d’utiliser les modules comme des namespaces. Les classes et méthodes d’un module sont accessibles dans un autre module avec la syntaxe \u003cNomModule\u003e::. (Fonctionnement similaire aux namespaces C++)\nLe but des namespaces est de regrouper les classes liées à une même logique.\nMixins Le système de module permet aussi de faire de l’héritage “horizontal” car ils peuvent être inclus dans une class.\nmodule Feature def une_fonction_liee_a_la_feature ... end end class MaClasse include Feature ... end objet = MaClass.new puts objet.une_fonction_liee_a_la_feature Inclure un module dans une classe greffe automatiquement toutes les méthodes d’instance qui sont dans le module, au niveau de la classe.\nMéthode included Les modules ont tous une méthode de classe included. Si on la définit, cela permet de capturer à chaque fois qu’une module est inclus dans un sous-module ou dans une classe.\nmodule Feature def self.included(base) # base = classe dans laquelle le module est inclus puts base end end Il est ainsi possible de modifier la classe dynamiquement à l’inclusion d’un module :\nmodule Feature def self.included(base) # base = classe dans laquelle le module est inclus def base.une_nouvelle_methode ... end end end extend au lieu de include extend transfère les méthodes d’instance en méthode classe.\nmodule Feature def une_methode ... end end class MaClasse extend Feature ... end puts MaClass.une_methode extend peut aussi être appelé depuis une instance de classe :\nmodule Feature def une_methode ... end end class MaClasse ... end objet = MaClasse.new objet.extend(Feature) puts objet.une_methode Cela a pour effet de rajouter les méthodes du mixin dans l’instance, mais uniquement pour cette instance.\nDe la même manière que include a un hook included permettant de capturer quand un module est inclus dans une classe. Il existe un hook extended qui permet de capturer quand un module est étendu par une classe.",
     "description": "Les modules Définition et création Il est possible de créer un module avec le mot-clé module.\nUn module fonctionne un peu comme une classe. À la différence qu’il ne peut ni être instancié ni hérité. Il peut en revanche contenir des constantes, des variables, des méthodes (toujours avec self) ou des classes.\nmodule MonModule MA_CONSTANTE = 1 def self.une_methode() ... end class MaClasse ... end end Inclusion de modules tiers Tous les modules ne sont pas inclus par defaut, il est possible d’inclure des modules tiers avec le mot-clé require.",
@@ -455,6 +458,17 @@ var relearn_searchindex = [
     ],
     "title": "Modules, namespaces et mixins",
     "uri": "/developpement/backend/ruby/modules/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Poste de travail",
+    "content": "Distributions LazyVim AstroVim NvChad Plugins Plugins Manager lazy.nvim LSP (Language Server Protocol) Manager nvim-lspconfig Installer mason.nvim mason-lspconfig.nvim Autocompletion nvim-cmp cmp-nvim-lsp cmp-buffer cmp-path Syntax nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-context Keybinding which-key.nvim Git gitsigns.nvim Themes tokyonight.nvim",
+    "description": "Distributions LazyVim AstroVim NvChad Plugins Plugins Manager lazy.nvim LSP (Language Server Protocol) Manager nvim-lspconfig Installer mason.nvim mason-lspconfig.nvim Autocompletion nvim-cmp cmp-nvim-lsp cmp-buffer cmp-path Syntax nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-context Keybinding which-key.nvim Git gitsigns.nvim Themes tokyonight.nvim",
+    "tags": [
+      "Workspace",
+      "Nvim"
+    ],
+    "title": "NeoVim",
+    "uri": "/workspace/neovim/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Poste de travail \u003e Linux",
@@ -555,23 +569,12 @@ var relearn_searchindex = [
     "uri": "/devops/kubernetes/volumes/index.html"
   },
   {
-    "breadcrumb": "Ma documentation \u003e Poste de travail \u003e Linux",
-    "content": "Distributions LazyVim AstroVim NvChad Plugins Plugins Manager lazy.nvim LSP (Language Server Protocol) Manager nvim-lspconfig Installer mason.nvim mason-lspconfig.nvim Autocompletion nvim-cmp cmp-nvim-lsp cmp-buffer cmp-path Syntax nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-context Keybinding which-key.nvim Git gitsigns.nvim Themes tokyonight.nvim",
-    "description": "Distributions LazyVim AstroVim NvChad Plugins Plugins Manager lazy.nvim LSP (Language Server Protocol) Manager nvim-lspconfig Installer mason.nvim mason-lspconfig.nvim Autocompletion nvim-cmp cmp-nvim-lsp cmp-buffer cmp-path Syntax nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-context Keybinding which-key.nvim Git gitsigns.nvim Themes tokyonight.nvim",
-    "tags": [
-      "Workspace",
-      "Nvim"
-    ],
-    "title": "NeoVim",
-    "uri": "/workspace/linux/neovim/index.html"
-  },
-  {
     "breadcrumb": "Ma documentation \u003e Poste de travail",
-    "content": "",
-    "description": "",
+    "content": "Installation d'un serveur Ubuntu Commandes utiles RedHat",
+    "description": "Installation d'un serveur Ubuntu Commandes utiles RedHat",
     "tags": [],
-    "title": "Windows",
-    "uri": "/workspace/windows/index.html"
+    "title": "Linux",
+    "uri": "/workspace/linux/index.html"
   },
   {
     "breadcrumb": "Ma documentation",
@@ -608,6 +611,14 @@ var relearn_searchindex = [
     ],
     "title": "Ressources",
     "uri": "/devops/kubernetes/resources/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Poste de travail",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Windows",
+    "uri": "/workspace/windows/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e Angular",
@@ -818,6 +829,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Tag :: Maven",
     "uri": "/tags/maven/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Neovim",
+    "uri": "/tags/neovim/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Tags",

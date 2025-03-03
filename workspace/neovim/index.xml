@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NeoVim :: Ma documentation</title><link>http://quentinpigne.github.io/workspace/neovim/index.html</link><description>Distributions LazyVim AstroVim NvChad Plugins Plugins Manager lazy.nvim LSP (Language Server Protocol) Manager nvim-lspconfig Installer mason.nvim mason-lspconfig.nvim Autocompletion nvim-cmp cmp-nvim-lsp cmp-buffer cmp-path Syntax nvim-treesitter nvim-treesitter-textobjects nvim-treesitter-context Keybinding which-key.nvim Git gitsigns.nvim Themes tokyonight.nvim</description><generator>Hugo</generator><language>fr-FR</language><atom:link href="http://quentinpigne.github.io/workspace/neovim/index.xml" rel="self" type="application/rss+xml"/><item><title>Raccourcis clavier</title><link>http://quentinpigne.github.io/workspace/neovim/shortcuts/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://quentinpigne.github.io/workspace/neovim/shortcuts/index.html</guid><description>Modes i: insertion (au niveau du curseur)
+I: insertion au début de la ligne
+a: insertion (après le curseur)
+A: insertion à la fin de la ligne
+o: insertion (nouvelle ligne en dessous)
+O: insertion (nouvelle ligne au-dessus)
+s: insertion après suppression du caractère courant
+S: insertion après suppression de la ligne
+v: visuel au niveau du curseur
+V: visuel au niveau de la ligne
+Ctrl+v: visuel bloc
+r: remplacer le caractère courant</description></item></channel></rss>
