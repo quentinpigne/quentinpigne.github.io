@@ -1,7 +1,7 @@
 ---
 title: "Design"
 chapter: true
-weight: 5
+weight: 6
 ---
 
 {{% children depth="3" showhidden="true" %}}

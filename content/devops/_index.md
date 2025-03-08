@@ -1,7 +1,7 @@
 ---
 title: "DevOps"
 chapter: true
-weight: 4
+weight: 5
 ---
 
 {{% children depth="2" showhidden="true" %}}
