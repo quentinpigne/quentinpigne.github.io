@@ -36,6 +36,17 @@ var relearn_searchindex = [
     "uri": "/developpement/backend/ruby/basics/index.html"
   },
   {
+    "breadcrumb": "Ma documentation \u003e Algorithmique \u003e Génération procédurale",
+    "content": "Références http://sdz.tdct.org/sdz/bruit-de-perlin.html https://github.com/pvigier/perlin-numpy/blob/master/perlin_numpy/perlin2d.py https://github.com/caseman/noise/blob/master/_perlin.c https://stackoverflow.com/questions/42147776/producing-2d-perlin-noise-with-numpy https://jaysmito101.hashnode.dev/perlins-noise-algorithm https://adrianb.io/2014/08/09/perlinnoise.html",
+    "description": "Références http://sdz.tdct.org/sdz/bruit-de-perlin.html https://github.com/pvigier/perlin-numpy/blob/master/perlin_numpy/perlin2d.py https://github.com/caseman/noise/blob/master/_perlin.c https://stackoverflow.com/questions/42147776/producing-2d-perlin-noise-with-numpy https://jaysmito101.hashnode.dev/perlins-noise-algorithm https://adrianb.io/2014/08/09/perlinnoise.html",
+    "tags": [
+      "Algorithmique",
+      "Perlin-Noise"
+    ],
+    "title": "Bruit de Perlin",
+    "uri": "/algorithmique/generation-procedurale/perlin-noise/index.html"
+  },
+  {
     "breadcrumb": "Ma documentation \u003e Architecture",
     "content": "System context diagram Container diagram Component diagram Code diagram Références https://c4model.com/",
     "description": "System context diagram Container diagram Component diagram Code diagram Références https://c4model.com/",
@@ -85,6 +96,16 @@ var relearn_searchindex = [
     ],
     "title": "Design systems et librairies graphiques",
     "uri": "/design/design-systems/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Algorithmique",
+    "content": "Bruit de Perlin",
+    "description": "Bruit de Perlin",
+    "tags": [
+      "Algorithmique"
+    ],
+    "title": "Génération procédurale",
+    "uri": "/algorithmique/generation-procedurale/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Poste de travail",
@@ -416,6 +437,14 @@ var relearn_searchindex = [
     "uri": "/developpement/backend/python/index.html"
   },
   {
+    "breadcrumb": "Ma documentation",
+    "content": "Génération procédurale",
+    "description": "Génération procédurale",
+    "tags": [],
+    "title": "Algorithmique",
+    "uri": "/algorithmique/index.html"
+  },
+  {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e CSS - SCSS",
     "content": "Utiliser un PNG transparent au dessus de l’image (méthode traditionnelle). Définir le border-radius à la moitié (50%) de la dimension de l’image de manière à faire un cercle. Utiliser les propriétés CSS3 mask et mask-clip (démo). Utiliser un canvas en tant que masque. Utiliser un SVG en tant que masque avec l’image comme background-pattern. Utiliser la propriété CSS3 clip-path. Références https://stackoverflow.com/questions/8337570/best-way-to-mask-an-image-in-html5 https://bennettfeely.com/clippy/",
     "description": "Utiliser un PNG transparent au dessus de l’image (méthode traditionnelle). Définir le border-radius à la moitié (50%) de la dimension de l’image de manière à faire un cercle. Utiliser les propriétés CSS3 mask et mask-clip (démo). Utiliser un canvas en tant que masque. Utiliser un SVG en tant que masque avec l’image comme background-pattern. Utiliser la propriété CSS3 clip-path. Références https://stackoverflow.com/questions/8337570/best-way-to-mask-an-image-in-html5 https://bennettfeely.com/clippy/",
@@ -432,14 +461,6 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Data Science",
     "uri": "/developpement/backend/python/data-science/index.html"
-  },
-  {
-    "breadcrumb": "Ma documentation",
-    "content": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
-    "description": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
-    "tags": [],
-    "title": "Développement",
-    "uri": "/developpement/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e DevOps",
@@ -546,11 +567,11 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation",
-    "content": "CI/CD Kubernetes Labels et Annotations Healthchecks: Liveness et Readiness Ressources: Limits et Requests Les volumes Ressources Outils Jenkins Docker",
-    "description": "CI/CD Kubernetes Labels et Annotations Healthchecks: Liveness et Readiness Ressources: Limits et Requests Les volumes Ressources Outils Jenkins Docker",
+    "content": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
+    "description": "Back-end Java Maven Python Bases du langage Programmation Orientée Objet Data Science Ruby Bases du langage Programmation Orientée Objet Modules, namespaces et mixins Front-end Angular Mise en place d'un projet Organisation des fichiers Vues et manipulations du DOM Injection de dépendances Gestion de l'état Migration de Karma vers Jest Librairies à points d'entrée multiples Angular sans CLI CSS - SCSS CSS Reset Block Margin Issue Appliquer un masque à une image CSS Overlay Techniques Faire de belles ombres en CSS",
     "tags": [],
-    "title": "DevOps",
-    "uri": "/devops/index.html"
+    "title": "Développement",
+    "uri": "/developpement/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e Angular",
@@ -578,11 +599,11 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Ma documentation",
-    "content": "Design systems et librairies graphiques Figma Raccourcis clavier",
-    "description": "Design systems et librairies graphiques Figma Raccourcis clavier",
+    "content": "CI/CD Kubernetes Labels et Annotations Healthchecks: Liveness et Readiness Ressources: Limits et Requests Les volumes Ressources Outils Jenkins Docker",
+    "description": "CI/CD Kubernetes Labels et Annotations Healthchecks: Liveness et Readiness Ressources: Limits et Requests Les volumes Ressources Outils Jenkins Docker",
     "tags": [],
-    "title": "Design",
-    "uri": "/design/index.html"
+    "title": "DevOps",
+    "uri": "/devops/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e CSS - SCSS",
@@ -619,6 +640,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Windows",
     "uri": "/workspace/windows/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation",
+    "content": "Design systems et librairies graphiques Figma Raccourcis clavier",
+    "description": "Design systems et librairies graphiques Figma Raccourcis clavier",
+    "tags": [],
+    "title": "Design",
+    "uri": "/design/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Développement \u003e Front-end \u003e Angular",
@@ -661,6 +690,14 @@ var relearn_searchindex = [
     ],
     "title": "Angular sans CLI",
     "uri": "/developpement/frontend/angular/without-cli/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Algorithmique",
+    "uri": "/tags/algorithmique/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Tags",
@@ -853,6 +890,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Tag :: Overlay",
     "uri": "/tags/overlay/index.html"
+  },
+  {
+    "breadcrumb": "Ma documentation \u003e Tags",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Tag :: Perlin-Noise",
+    "uri": "/tags/perlin-noise/index.html"
   },
   {
     "breadcrumb": "Ma documentation \u003e Tags",
